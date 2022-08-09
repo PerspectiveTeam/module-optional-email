@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Perspective_OptionalEmail::top_level" parent="Perspective_Core::top_level" sortOrder="10"
+             title="Optional Email" module="Magento_Backend"
+             resource="Perspective_Core::menu"/>
+
+        <add id="Perspective_OptionalEmail::rules" parent="Perspective_OptionalEmail::top_level" sortOrder="10"
+             title="Rules" module="Magento_Backend"
+             resource="Perspective_Core::menu"
+             action="perspective_optionalemail/rules/index"/>
+    </menu>
+</config>

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="perspective_optionalemail" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                 translate="label">
+            <label>Optional Email</label>
+            <tab>perspective</tab>
+            <resource>Perspective_OptionalEmail::settings</resource>
+            <group id="debug" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>Debug</label>
+                <field id="enabled" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>Enable Debug Mode</label>
+                    <comment>
+                        Log every email resolving as WARNING into the system.log.
+                        Use to search some data for your new rule.
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="prefix" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>Add Prefix</label>
+                    <comment>
+                        Adds `debug-[6*rand()]-` prefix to an every non-null returned email.
+                        Helpful when multple getEmail() calls happens during request to determine which is what in the logs.
+                        Caution: can result into various exceptions.
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

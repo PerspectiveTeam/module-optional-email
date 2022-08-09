@@ -1,0 +1,29 @@
+{
+    "name": "perspective/module-optional-email",
+    "description": "Magento 2 optional customer email module",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Roman Bondarenko",
+            "email": "theuargb@gmail.com"
+        },
+        {
+            "name": "Perspective Studio",
+            "email": ""
+        }
+    ],
+    "minimum-stability": "dev",
+    "version": "0.1.3",
+    "require": {
+        "hyva-themes/module-magento2-admin": "^1.1"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Perspective\\OptionalEmail\\": ""
+        }
+    }
+}

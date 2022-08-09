@@ -1,0 +1,4 @@
+input SetGuestEmailOnCartInput {
+    cart_id: String!
+    email: String
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Perspective\OptionalEmail\Api\RuleRepositoryInterface"
+                type="Perspective\OptionalEmail\Model\RuleRepository"/>
+    <preference for="Perspective\OptionalEmail\Api\Data\RuleInterface" type="Perspective\OptionalEmail\Model\Rule"/>
+    <preference for="Perspective\OptionalEmail\Api\Data\RuleSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+
+    <preference for="Perspective\OptionalEmail\Api\EmailResolverInterface"
+                type="Perspective\OptionalEmail\Model\EmailResolver"/>
+    <preference for="Perspective\OptionalEmail\Api\EmailGeneratorInterface"
+                type="Perspective\OptionalEmail\Model\EmailGenerator"/>
+
+    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
+        <plugin name="email_generator" disabled="false"
+                type="Perspective\OptionalEmail\Plugin\CustomerRepository"
+                sortOrder="0"/>
+    </type>
+
+    <type name="Magento\Customer\Api\Data\CustomerInterface">
+        <plugin name="email_resolver" disabled="false"
+                type="Perspective\OptionalEmail\Plugin\CustomerInterface"
+                sortOrder="0"/>
+    </type>
+
+    <type name="Magento\Sales\Model\Order\Address\Validator">
+        <plugin name="null_email_handler" disabled="false"
+                type="Perspective\OptionalEmail\Plugin\OrderAddressValidator"
+                sortOrder="0"/>
+    </type>
+
+    <type name="Magento\Quote\Api\CartRepositoryInterface">
+        <plugin name="guest_checkout_handler" disabled="false"
+                type="Perspective\OptionalEmail\Plugin\CartRepository"
+                sortOrder="0"/>
+    </type>
+</config>

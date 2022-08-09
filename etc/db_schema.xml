@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="perspective_optionalemail_rule" resource="default" engine="innodb" comment="Null-handling rules table">
+		<column xsi:type="int" name="rule_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="rule_id"/>
+		</constraint>
+		<column name="area" nullable="true" xsi:type="varchar" comment="Aria filter" length="255"/>
+		<column name="backtrace_xpath" nullable="true" xsi:type="varchar" comment="Backtrace xpath" length="255"/>
+		<column name="pass_nulls" nullable="false" xsi:type="tinyint" comment="Pass null values"/>
+		<column name="comment" nullable="true" xsi:type="varchar" comment="Comment"/>
+	</table>
+</schema>
