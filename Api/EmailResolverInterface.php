@@ -9,7 +9,7 @@ interface EmailResolverInterface
 {
 
     /**
-     * @param null|int|CustomerInterface|Customer $customer
+     * @param null|int|string|CustomerInterface|Customer $customer
      * @param null|false|string $coreEmail
      *
      * @return null|string

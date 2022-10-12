@@ -57,11 +57,6 @@ class EmailResolver implements EmailResolverInterface
     private $ruleRepository;
 
     /**
-     * @var XmlBacktrace
-     */
-    private $xmlBacktrace;
-
-    /**
      * @var Random
      */
     private $random;
@@ -73,7 +68,6 @@ class EmailResolver implements EmailResolverInterface
         State                       $state,
         SearchCriteriaBuilder       $searchCriteriaBuilder,
         FilterBuilder               $filterBuilder,
-        XmlBacktrace                $xmlBacktrace,
         RuleRepositoryInterface     $ruleRepository,
         Random                      $random,
         Json                      $json,
@@ -85,7 +79,6 @@ class EmailResolver implements EmailResolverInterface
         $this->state = $state;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->filterBuilder = $filterBuilder;
-        $this->xmlBacktrace = $xmlBacktrace;
         $this->ruleRepository = $ruleRepository;
         $this->random = $random;
         $this->json = $json;
@@ -174,9 +167,9 @@ class EmailResolver implements EmailResolverInterface
             return $coreEmail;
         }
 
-        $backtrace = $this->xmlBacktrace->create();
+        $backtrace = XmlBacktracer::create();
         foreach ($nullHandlingRules->getItems() as $nullHandlingRule) {
-            $backtraceMatched = $this->xmlBacktrace->evaluateXpath($backtrace, $nullHandlingRule->getBacktraceXpath());
+            $backtraceMatched = XmlBacktracer::evaluateXpath($backtrace, $nullHandlingRule->getBacktraceXpath());
             if ($backtraceMatched) {
                 $matchedRule = $nullHandlingRule;
                 break;

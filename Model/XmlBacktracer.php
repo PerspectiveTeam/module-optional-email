@@ -2,25 +2,10 @@
 
 namespace Perspective\OptionalEmail\Model;
 
-use DiDom\Document;
-
-class XmlBacktrace
+class XmlBacktracer
 {
 
-    /**
-     * @var Document
-     */
-    private $document;
-
-    /**
-     * @param Document $document
-     */
-    public function __construct(Document $document)
-    {
-        $this->document = $document;
-    }
-
-    public function create(): string
+    public static function create(): string
     {
         $nodeXml = "<call file=\"__FILE__\">__INNER__</call>";
 
@@ -44,14 +29,14 @@ class XmlBacktrace
         return "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>" . $result;
     }
 
-    public function evaluateXpath(?string $xml, string $xpath): bool
+    public static function evaluateXpath(?string $xml, string $xpath): bool
     {
         if (!$xml) {
-            $xml = $this->create();
+            $xml = self::create();
         }
 
-        $this->document->loadXml($xml);
-        $elements = $this->document->xpath($xpath);
-        return count($elements) === 1 && $elements[0]->outerHtml() === $this->document->xpath('/call')[0]->outerHtml();
+        $document = simplexml_load_string($xml);
+        $elements = $document->xpath($xpath);
+        return count($elements) > 0;
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "perspective/module-optional-email",
-    "description": "Magento 2 optional customer email module",
+    "description": "Magento 2 customer email optionalizer",
     "type": "magento2-module",
     "license": "GPL-3.0",
     "authors": [
@@ -14,8 +14,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "require": {
+        "ext-mbstring": "*",
+        "ext-simplexml": "*",
         "hyva-themes/module-magento2-admin": "^1.1"
     },
     "autoload": {
